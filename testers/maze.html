@@ -18,6 +18,9 @@
         #output div div div.wall {
             background-color: black;
         }
+        #output div div div.outer-wall {
+            background-color: red;
+        }
     </style>
   </head>
   <body>
@@ -25,6 +28,7 @@
   </body>
   <script src="../scripts/Global.js"></script>
   <script>
+      // Parameters must be same, odd numbers in order to properly generate the maze
       var myMaze = new MazeBuilder(7, 7);
       myMaze.display("output")
   </script>
