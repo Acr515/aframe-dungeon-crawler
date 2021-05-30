@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Maze Tester</title>
+    <meta name="description" content="Maze Tester">
+    <script src="../scripts/MazeBuilder.js"></script>
+    <script src="../scripts/Util.js"></script>
+    <style>
+        #output div div {
+            height: 20px;
+        }
+        #output div div div {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+        #output div div div.wall {
+            background-color: black;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="output"></div>
+  </body>
+  <script src="../scripts/Global.js"></script>
+  <script>
+      var myMaze = new MazeBuilder(7, 7);
+      myMaze.display("output")
+  </script>
+</html>
