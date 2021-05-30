@@ -13,7 +13,6 @@ AFRAME.registerComponent('tile', {
     
       // Determine and set color
       let hex = "";
-      console.log(this.color, this.el.color)
       if (this.data.color == "light") {
         hex = "#666666";
       } else {
