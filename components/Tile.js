@@ -1,36 +1,40 @@
 AFRAME.registerComponent('tile', {
-    dependencies: ['material'],
-    
-    schema: {
-      color: {type: 'string'},
-      exit: {type: 'number'}
-    },
-  
-    init: function () {
-      this.el.object3D.scale.set(Global.CONSTANTS.areaScale, Global.CONSTANTS.areaScale, 1);
-      this.el.object3D.rotation.x = toRads(-90);
-      this.el.setAttribute("geometry", "primitive: plane");
-    
-      // Determine and set color
-      let hex = "";
-      if (this.data.color == "light") {
-        hex = "#666666";
-      } else {
-        hex = "#555555";
-      }
-    
-      this.el.setAttribute("material", "color", hex);
-    },
-  
-    update: function () {
-      // Do something when component's data is updated.
-    },
-  
-    remove: function () {
-      // Do something the component or its entity is detached.
-    },
-  
-    tick: function (time, timeDelta) {
-      // Do something on every scene tick or frame.
-    }
-  });
+	dependencies: ['material'],
+	
+	schema: {
+		color: {type: 'string'},
+		exit: {type: 'number'}
+	},
+
+	init: function () {
+		this.el.object3D.scale.set(Global.CONSTANTS.areaScale, Global.CONSTANTS.areaScale, 1);
+		this.el.object3D.rotation.x = toRads(-90);
+		this.el.setAttribute("geometry", "primitive: plane");
+	
+		// Determine and set color
+		let hex = "";
+		if (this.data.color == "light") {
+			hex = "#666666";
+		} else {
+			hex = "#555555";
+		}
+	
+		this.el.setAttribute("material", "color", hex);
+
+		this.el.addEventListener('click', function (evt) {
+			this.el.setAttribute("material", "color", "#aa4444");
+		});
+	},
+
+	update: function () {
+		// Do something when component's data is updated.
+	},
+
+	remove: function () {
+		// Do something the component or its entity is detached.
+	},
+
+	tick: function (time, timeDelta) {
+		// Do something on every scene tick or frame.
+	}
+});

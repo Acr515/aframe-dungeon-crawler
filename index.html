@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>A-Frame Dungeon Crawler</title>
-    <meta name="description" content="A-Frame Dungeon Crawler">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="scripts/MazeBuilder.js"></script>
-    <script src="scripts/Util.js"></script>
-    
-    <script src="components/Wall.js"></script>
-    <script src="components/Tile.js"></script>
-  </head>
-  <body>
-    <a-scene background="color: #ECECEC">
-      <a-camera position="0 1.6 0"></a-camera>
-    </a-scene>
-  </body>
-  <script src="scripts/Global.js"></script>
-  <script src="App.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title>A-Frame Dungeon Crawler</title>
+		<meta name="description" content="A-Frame Dungeon Crawler">
+		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="scripts/MazeBuilder.js"></script>
+		<script src="scripts/Util.js"></script>
+		<script src="scripts/Global.js"></script>
+
+		<script src="components/Wall.js"></script>
+		<script src="components/Tile.js"></script>
+		<script src="components/items/Sword.js"></script>
+
+		<script>
+			AFRAME.registerComponent('x-button-listener', {
+				init: function () {
+					var el = this.el;
+					el.addEventListener('xbuttondown', function (evt) {
+						get("rig").object3D.position.set(Global.CONSTANTS.areaScale * 2, 1.6, Global.CONSTANTS.areaScale * 2);
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<a-scene background="color: #ECECEC">
+			<a-entity id="rig">
+				<a-entity id="cam" camera look-controls wasd-controls></a-entity>
+				<a-entity model x-button-listener oculus-touch-controls="hand: left" laser-controls>
+				</a-entity>
+				<a-entity model oculus-touch-controls="hand: right"></a-entity>
+			</a-entity>
+			
+			<a-entity>
+				<a-box scale=".25 .9 .25" color="#7a5b11"></a-box>
+				<a-box scale="1 .25 .25" color="#7a5b11" position="0 .4 0"></a-box>
+				<a-box scale=".6 2 .15" color="#999999" position="0 1.5 0"></a-box>
+				<a-box scale=".3 .5 .15" color="#999999" position="0 2.75 0"></a-box>
+			</a-entity>
+
+			<a-entity id="sword" position="-.5 0 -.5" item-sword="size: .25; color: #7a5b11;"></a-entity>
+			
+		</a-scene>
+	</body>
+	<script src="App.js"></script>
 </html>
