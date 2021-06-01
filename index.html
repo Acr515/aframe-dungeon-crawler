@@ -18,7 +18,7 @@
 				init: function () {
 					var el = this.el;
 					el.addEventListener('xbuttondown', function (evt) {
-						get("rig").object3D.position.set(Global.CONSTANTS.areaScale * 2, 1.6, Global.CONSTANTS.areaScale * 2);
+						get("rig").object3D.position.set(Global.CONSTANTS.areaScale * 2, Global.height, Global.CONSTANTS.areaScale * 2);
 					});
 				}
 			});
@@ -26,7 +26,23 @@
 				init: function () {
 					var el = this.el;
 					el.addEventListener('ybuttondown', function (evt) {
-						get("rig").object3D.position.set(0, 1.6, 0);
+						get("rig").object3D.position.set(0, Global.height, 0);
+					});
+				}
+			});
+			AFRAME.registerComponent('a-button-listener', {
+				init: function () {
+					var el = this.el;
+					el.addEventListener('abuttondown', function (evt) {
+						Global.height = 1.6;
+					});
+				}
+			});
+			AFRAME.registerComponent('b-button-listener', {
+				init: function () {
+					var el = this.el;
+					el.addEventListener('bbuttondown', function (evt) {
+						Global.height = 0;
 					});
 				}
 			});
@@ -36,7 +52,7 @@
 		<a-scene background="color: #ECECEC">
 			<a-entity id="rig">
 				<a-entity id="cam" camera look-controls wasd-controls position="0 0 0"></a-entity>
-				<a-entity model x-button-listener oculus-touch-controls="hand: left"></a-entity>
+				<a-entity model x-button-listener y-button-listener oculus-touch-controls="hand: left"></a-entity>
 				<a-entity model oculus-touch-controls="hand: right"></a-entity>
 			</a-entity>
 			
