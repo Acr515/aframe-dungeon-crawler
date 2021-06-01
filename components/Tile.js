@@ -10,19 +10,26 @@ AFRAME.registerComponent('tile', {
 		this.el.object3D.scale.set(Global.CONSTANTS.areaScale, Global.CONSTANTS.areaScale, 1);
 		this.el.object3D.rotation.x = toRads(-90);
 		this.el.setAttribute("geometry", "primitive: plane");
-	
+		this.hex = "#666666";
+
 		// Determine and set color
-		let hex = "";
 		if (this.data.color == "light") {
-			hex = "#666666";
+			this.hex = "#666666";
 		} else {
-			hex = "#555555";
+			this.hex = "#555555";
 		}
 	
-		this.el.setAttribute("material", "color", hex);
+		this.el.setAttribute("material", "color", this.hex);
 
-		this.el.addEventListener('click', function (evt) {
-			this.el.setAttribute("material", "color", "#aa4444");
+		// Laser pointer now focused on this element
+		this.el.addEventListener('raycaster-intersected', evt => {
+			emit("update-tile", evt.detail.el);
+			this.el.setAttribute("material", "color", "#eeeeee");
+		});
+		// Laser pointer now looking away from this element
+		this.el.addEventListener('raycaster-intersected-cleared', evt => {
+			emit("update-tile", null)
+			this.el.setAttribute("material", "color", this.hex);
 		});
 	},
 
