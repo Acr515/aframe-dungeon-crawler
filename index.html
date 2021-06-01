@@ -22,14 +22,21 @@
 					});
 				}
 			});
+			AFRAME.registerComponent('y-button-listener', {
+				init: function () {
+					var el = this.el;
+					el.addEventListener('ybuttondown', function (evt) {
+						get("rig").object3D.position.set(0, 1.6, 0);
+					});
+				}
+			});
 		</script>
 	</head>
 	<body>
 		<a-scene background="color: #ECECEC">
 			<a-entity id="rig">
-				<a-entity id="cam" camera look-controls wasd-controls></a-entity>
-				<a-entity model x-button-listener oculus-touch-controls="hand: left" laser-controls>
-				</a-entity>
+				<a-entity id="cam" camera look-controls wasd-controls position="0 0 0"></a-entity>
+				<a-entity model x-button-listener oculus-touch-controls="hand: left"></a-entity>
 				<a-entity model oculus-touch-controls="hand: right"></a-entity>
 			</a-entity>
 			
