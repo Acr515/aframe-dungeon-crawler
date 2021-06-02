@@ -29,9 +29,9 @@ AFRAME.registerComponent('controller-right', {
             if (this.activeTile == null) return;
             
             processTurn({
-                x: this.activeTile.object3D.position.x * Global.CONSTANTS.areaScale + Global.CONSTANTS.areaScale,
+                x: this.activeTile.object3D.position.x,
                 y: Global.height,
-                z: this.activeTile.object3D.position.z * Global.CONSTANTS.areaScale + Global.CONSTANTS.areaScale,
+                z: this.activeTile.object3D.position.z
             });
         });
     }
