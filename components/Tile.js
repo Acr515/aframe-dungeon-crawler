@@ -23,7 +23,7 @@ AFRAME.registerComponent('tile', {
 
 		// Laser pointer now focused on this element
 		this.el.addEventListener('raycaster-intersected', evt => {
-			get("controllerRight").emit("update-tile", { tile: evt.detail.el });
+			get("controllerRight").emit("update-tile", { tile: this.el });
 			this.el.setAttribute("material", "color", "#999999");
 		});
 		// Laser pointer now looking away from this element
