@@ -30,8 +30,8 @@ AFRAME.registerComponent('controller-right', {
             
             processTurn({
                 x: this.activeTile.object3D.position.x * Global.CONSTANTS.areaScale,
-                y: Global.height,
-                z: this.activeTile.object3D.position.z * Global.CONSTANTS.areaScale
+                y: this.activeTile.object3D.position.y * Global.CONSTANTS.areaScale,
+                z: Global.height
             });
         });
     }
