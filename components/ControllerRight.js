@@ -25,6 +25,7 @@ AFRAME.registerComponent('controller-right', {
 
         this.el.addEventListener('triggerup', function (evt) {
             if (this.activeTile == null) return;
+            console.log("Click found, target was:", this.activeTile)
             processTurn({
                 x: this.activeTile.object3D.position.x * Global.CONSTANTS.areaScale,
                 y: Global.height,
