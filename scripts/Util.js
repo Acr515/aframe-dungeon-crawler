@@ -70,3 +70,14 @@ function createMaze(maze) {
 		}
 	}
 }
+
+
+// Moves the camera
+function moveRig(pos) {
+	get("rig").object3D.position.set(pos.x, pos.y, pos.z);
+}
+
+// Processes an in-game turn after the user makes a move
+function processTurn(pos) {
+	moveRig(pos);
+}
