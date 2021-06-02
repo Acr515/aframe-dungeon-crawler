@@ -13,6 +13,7 @@ AFRAME.registerComponent('controller-right', {
         this.activeTile = null
         this.el.addEventListener('update-tile', function (tile) {
             this.activeTile = tile;
+            console.log("tile updated to ", this.activeTile)
         });
 
         this.el.addEventListener('abuttondown', function (evt) {
