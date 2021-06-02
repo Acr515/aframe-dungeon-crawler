@@ -1,6 +1,6 @@
 AFRAME.registerComponent('controller-right', {
     init: function () {
-        // Apply components
+        // Components
         this.el.setAttribute("model", "");
         this.el.setAttribute("laser-controls", { hand: "right" });
         this.el.setAttribute("raycaster", {
@@ -8,12 +8,15 @@ AFRAME.registerComponent('controller-right', {
             far: 4
         });
 
+        // Local variables
+        this.activeTile = null;
+        this.state = "move";
+        this.item = null;
 
-        // Logic
-        this.activeTile = null
+        // Listeners
         this.el.addEventListener('update-tile', function (evt) {
             this.activeTile = evt.detail.tile;
-            console.log("tile updated to ", this.activeTile)
+            console.log("tile updated to ", evt.detail)
         });
 
         this.el.addEventListener('triggerup', function (evt) {

@@ -1,8 +1,12 @@
 AFRAME.registerComponent('controller-left', {
     init: function () {
-        // Apply components
+        // Components
         this.el.setAttribute("model", "");
         this.el.setAttribute("oculus-touch-controls", { hand: "left" });
+
+        // Local variables
+        this.state = "idle";
+        this.item = null;
 
         // Logic
         this.el.addEventListener('xbuttondown', function (evt) {
