@@ -10,6 +10,7 @@
 		<script src="scripts/Global.js"></script>
 
 		<script src="components/ControllerRight.js"></script>
+		<script src="components/ControllerLeft.js"></script>
 		<script src="components/Wall.js"></script>
 		<script src="components/Tile.js"></script>
 		
@@ -17,30 +18,15 @@
 		
 
 		<script>
-			AFRAME.registerComponent('x-button-listener', {
-				init: function () {
-					var el = this.el;
-					el.addEventListener('xbuttondown', function (evt) {
-						get("rig").object3D.position.set(Global.CONSTANTS.areaScale * 2, Global.height, Global.CONSTANTS.areaScale * 2);
-					});
-				}
-			});
-			AFRAME.registerComponent('y-button-listener', {
-				init: function () {
-					var el = this.el;
-					el.addEventListener('ybuttondown', function (evt) {
-						get("rig").object3D.position.set(0, Global.height, 0);
-					});
-				}
-			});
+			
 		</script>
 	</head>
 	<body>
 		<a-scene background="color: #ECECEC">
 			<a-entity id="rig">
 				<a-entity id="cam" camera look-controls wasd-controls position="0 0 0"></a-entity>
-				<a-entity id="controlLeft" model x-button-listener y-button-listener tracked-controls="hand: left"></a-entity>
-				<a-entity id="controlRight" model controller-right laser-controls="hand: right" raycaster="objects: .tile; far: 4"></a-entity>
+				<a-entity id="controllerLeft" controller-left></a-entity>
+				<a-entity id="controllerRight" controller-right></a-entity>
 			</a-entity>
 			
 			<a-entity>

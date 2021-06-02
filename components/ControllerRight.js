@@ -1,5 +1,15 @@
 AFRAME.registerComponent('controller-right', {
     init: function () {
+        // Apply components
+        this.el.setAttribute("model", "");
+        this.el.setAttribute("laser-controls", { hand: "right" });
+        this.el.setAttribute("raycaster", {
+            objects: ".tile",
+            far: 4
+        });
+
+
+        // Logic
         this.activeTile = null
         this.el.addEventListener('update-tile', function (tile) {
             this.activeTile = tile;
@@ -15,7 +25,11 @@ AFRAME.registerComponent('controller-right', {
 
         this.el.addEventListener('triggerup', function (evt) {
             if (this.activeTile == null) return;
-            get("rig").object3D.position.set(this.activeTile.object3D.position.x * Global.CONSTANTS.areaScale, Global.height, this.activeTile.object3D.position.z * Global.CONSTANTS.areaScale);
+            processTurn({
+                x: this.activeTile.object3D.position.x * Global.CONSTANTS.areaScale,
+                y: Global.height,
+                z: this.activeTile.object3D.position.z * Global.CONSTANTS.areaScale
+            });
         });
     }
 });
