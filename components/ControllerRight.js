@@ -16,7 +16,7 @@ AFRAME.registerComponent('controller-right', {
             console.log("tile updated to ", this.activeTile)
         });
 
-        this.el.addEventListener('abuttondown', function (evt) {
+        this.el.addEventListener('triggerup', function (evt) {
             Global.height = 1.6;
         });
 
@@ -24,8 +24,8 @@ AFRAME.registerComponent('controller-right', {
             Global.height = 0;
         });
 
-        this.el.addEventListener('triggerup', function (evt) {
-            console.log("Click found, target was:", this.activeTile)
+        this.el.addEventListener('abuttondown', function (evt) {
+            console.log("Click found, target was:", this.activeTile);
             if (this.activeTile == null) return;
             
             processTurn({
