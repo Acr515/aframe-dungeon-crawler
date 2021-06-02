@@ -11,7 +11,7 @@ AFRAME.registerComponent('controller-right', {
 
         // Logic
         this.activeTile = null
-        this.el.addEventListener('update-tile', function ({tile}) {
+        this.el.addEventListener('update-tile', function (tile) {
             this.activeTile = tile;
             console.log("tile updated to ", this.activeTile)
         });
