@@ -11,7 +11,7 @@ AFRAME.registerComponent('controller-right', {
 
         // Logic
         this.activeTile = null
-        this.el.addEventListener('update-tile', function (tile) {
+        this.el.addEventListener('update-tile', function ({tile}) {
             this.activeTile = tile;
             console.log("tile updated to ", this.activeTile)
         });
@@ -25,8 +25,9 @@ AFRAME.registerComponent('controller-right', {
         });
 
         this.el.addEventListener('triggerup', function (evt) {
-            if (this.activeTile == null) return;
             console.log("Click found, target was:", this.activeTile)
+            if (this.activeTile == null) return;
+            
             processTurn({
                 x: this.activeTile.object3D.position.x * Global.CONSTANTS.areaScale,
                 y: Global.height,

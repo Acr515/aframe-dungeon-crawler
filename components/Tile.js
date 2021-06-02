@@ -28,7 +28,7 @@ AFRAME.registerComponent('tile', {
 		});
 		// Laser pointer now looking away from this element
 		this.el.addEventListener('raycaster-intersected-cleared', evt => {
-			get("controllerRight").emit("update-tile", null)
+			get("controllerRight").emit("update-tile", { tile: null })
 			this.el.setAttribute("material", "color", this.hex);
 		});
 	},
