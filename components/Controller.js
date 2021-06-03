@@ -8,6 +8,7 @@ AFRAME.registerComponent('controller', {
     init: function () {
         // Components
         this.el.setAttribute("model", "");
+        this.el.setAttribute("oculus-touch-controls", { hand: this.data.hand });
         this.el.setAttribute("laser-controls", { hand: this.data.hand });
         this.el.setAttribute("raycaster", {
             objects: ".tile",
@@ -110,11 +111,13 @@ AFRAME.registerComponent('controller', {
 
     // Adds an item to the player's hand
     moveListener_AddSword: function(event) {
-        this.el.emit("change-state", { state: "", item: "sword" });
+        this.item = "sword";
+        this.updateState();
     },
 
     // Adds the controller back to the player's hand
     moveListener_UseModel: function(event) {
-        this.el.emit("change-state", { state: "", item: "default" });
+        this.item = "default";
+        this.updateState();
     }
 });
