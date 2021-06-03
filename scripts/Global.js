@@ -17,7 +17,7 @@ var Global = {
 		"#",	// purple
 		"#"		// white
 	],
-	height: 1.6,			// height of camera, should be 0 when in immersive mode?
+	height: 0,				// height of camera, should be 0 when in immersive mode
 	maze: maze,				// MazeBuilder instance containing the current maze
 	x: 0,					// x-position of player on game grid
 	y: 0,					// y-position of player on game grid

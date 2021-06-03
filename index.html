@@ -25,8 +25,11 @@
 		<a-scene background="color: #ECECEC">
 			<a-entity id="rig">
 				<a-entity id="cam" camera look-controls wasd-controls position="0 0 0"></a-entity>
-				<a-entity id="controllerLeft" controller-left></a-entity>
-				<a-entity id="controllerRight" controller-right></a-entity>
+				<!--<a-entity id="controllerLeft" controller-left></a-entity>
+				<a-entity id="controllerRight" controller-right></a-entity>-->
+
+				<a-entity id="controllerLeft" controller hand="left" beginState="idle"></a-entity>
+				<a-entity id="controllerRight" controller hand="right" beginState="move"></a-entity>
 			</a-entity>
 
 			<a-entity id="sword" position="-.5 0 -.5" item-sword="size: .25; color: #7a5b11;"></a-entity>
