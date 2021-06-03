@@ -24,12 +24,12 @@ AFRAME.registerComponent('controller', {
         this.el.addEventListener('change-state', function(event) {
             if (event.detail.state != "") this.state = event.detail.state;
             if (event.detail.state != "") this.item = event.detail.item;
-            updateState();
+            this.updateState();
         });
         this.el.addEventListener('abuttondown', this.moveListener_AddSword);
         this.el.addEventListener('bbuttondown', this.moveListener_UseModel);
 
-        updateState();
+        this.updateState();
     },
 
     // Gets whether or not the buttons are x-y or a-b
