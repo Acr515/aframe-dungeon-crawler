@@ -30,7 +30,6 @@ AFRAME.registerComponent('controller', {
         this.el.addEventListener('abuttondown', this.moveListener_AddSword);
         this.el.addEventListener('bbuttondown', this.moveListener_UseModel);
 
-        console.log(this);
         this.updateState();
     },
 
@@ -111,13 +110,11 @@ AFRAME.registerComponent('controller', {
 
     // Adds an item to the player's hand
     moveListener_AddSword: function(event) {
-        this.item = "sword";
-        this.updateState();
+        this.emit("change-state", { item: "sword", state: "" });
     },
 
     // Adds the controller back to the player's hand
     moveListener_UseModel: function(event) {
-        this.item = "default";
-        this.updateState();
+        this.emit("change-state", { item: "default", state: "" });
     }
 });
