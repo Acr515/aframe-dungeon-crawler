@@ -94,7 +94,6 @@ AFRAME.registerComponent('controller', {
     // Handles the update-tile event to set the active tile
     moveListener_UpdateTile: function(event) {
         this.activeTile = event.detail.tile;
-        console.log("tile updated to ", event.detail);
     },
 
     // Handles the trigger event 
@@ -111,6 +110,7 @@ AFRAME.registerComponent('controller', {
 
     // Adds an item to the player's hand
     moveListener_AddSword: function(event) {
+        console.log(this);
         this.item = "sword";
         this.updateState();
     },
